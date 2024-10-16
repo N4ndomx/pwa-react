@@ -1,0 +1,19 @@
+/* src/index.css */
+.carousel-item img {
+    object-fit: cover;
+    /* Asegura que la imagen llene el contenedor sin distorsionarse */
+    height: 400px;
+    /* Establece una altura uniforme para las imágenes del carrusel */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    /* Fondo semi-transparente para las descripciones */
+    border-radius: 5px;
+    /* Bordes redondeados */
+}
+
+.inicio {
+    padding-bottom: 20px;
+    /* Espaciado en la parte inferior para que el contenido no esté muy pegado al footer */
+}
