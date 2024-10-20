@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Contact = () => {
     // Estado para los valores del formulario
     const [formData, setFormData] = useState({
-        nombre: '',
-        apellidos: '',
-        correo: '',
-        mensaje: ''
+        name: '',
+        last_names: '',
+        email: '',
+        comment: ''
     });
 
-    // Estado para el mensaje de éxito o error
+    // Estado para el comment de éxito o error
     const [message, setMessage] = useState(null);
 
     // Manejar cambios en el formulario
@@ -27,21 +27,16 @@ const Contact = () => {
         e.preventDefault();
         try {
             // Realizar POST a la API
-            const response = await axios.post('https://api-ejemplo.com/contacto', formData);
+            const response = await axios.post('http://localhost:8080/comentarios', formData);
 
             if (response.status === 200) {
-                setMessage('¡Tu mensaje ha sido enviado correctamente!');
+                setMessage('¡Tu comentario ha sido enviado correctamente!');
             }
         } catch (error) {
-            setMessage('Hubo un error al enviar tu mensaje. Inténtalo nuevamente.');
+            setMessage('Hubo un error al enviar tu comment. Inténtalo nuevamente.');
         }
 
-        setFormData({
-            nombre: '',
-            apellidos: '',
-            correo: '',
-            mensaje: ''
-        });
+
     };
 
     return (
@@ -49,49 +44,49 @@ const Contact = () => {
             <h3 className="text-center  mt-3 p-3">Contáctanos</h3>
             <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: '600px' }}>
                 <div className="mb-2">
-                    <label htmlFor="nombre" className="form-label">Nombre Completo</label>
+                    <label htmlFor="name" className="form-label">Nombres</label>
                     <input
                         type="text"
                         className="form-control "
-                        id="nombre"
-                        name="nombre"
-                        value={formData.nombre}
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className="mb-2">
-                    <label htmlFor="apellidos" className="form-label">Apellidos</label>
+                    <label htmlFor="last_names" className="form-label">Apellidos</label>
                     <input
                         type="text"
                         className="form-control "
-                        id="apellidos"
-                        name="apellidos"
-                        value={formData.apellidos}
+                        id="last_names"
+                        name="last_names"
+                        value={formData.last_names}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className="mb-2">
-                    <label htmlFor="correo" className="form-label">Correo Electrónico</label>
+                    <label htmlFor="email" className="form-label">Correo Electrónico</label>
                     <input
                         type="email"
                         className="form-control "
-                        id="correo"
-                        name="correo"
-                        value={formData.correo}
+                        id="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="mensaje" className="form-label">Mensaje</label>
+                    <label htmlFor="comment" className="form-label">Comentario</label>
                     <textarea
                         className="form-control "
-                        id="mensaje"
-                        name="mensaje"
+                        id="comment"
+                        name="comment"
                         rows="3"
-                        value={formData.mensaje}
+                        value={formData.comment}
                         onChange={handleChange}
                         required
                     />
@@ -99,7 +94,7 @@ const Contact = () => {
                 <button type="submit" className="btn btn-primary  w-100  mt-4 mb-5">Enviar</button>
             </form>
 
-            {/* Mostrar mensaje de éxito o error */}
+            {/* Mostrar comment de éxito o error */}
             {message && <div className="alert alert-info mt-2">{message}</div>}
         </div>
     );
